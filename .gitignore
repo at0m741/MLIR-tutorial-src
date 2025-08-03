@@ -1,0 +1,20 @@
+# Python artifacts
+*.egg-info/
+build/
+dist/
+__pycache__/
+
+# CMake / ninja / cmake-build
+pybuild/
+compile_commands.json
+*.o
+*.so
+*.a
+# python
+.venv/
+# macOS
+*.DS_Store
+
+# clangd
+.cache/
+.idea/
