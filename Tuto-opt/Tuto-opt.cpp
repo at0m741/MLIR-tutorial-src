@@ -20,11 +20,9 @@
 #include "mlir/Dialect/LLVMIR/LLVMDialect.h"
 #include "TutoDialect/TutoDialect.h"
 #include "TutoDialect/TutoOpsDialect.cpp.inc"
-
 #include "mlir/Dialect/Func/IR/FuncOps.h"
 
 int main(int argc, char **argv) {
-
   mlir::DialectRegistry registry;
   registry.insert<mlir::tuto::TutoDialect>();
   registry.insert<mlir::arith::ArithDialect>();
