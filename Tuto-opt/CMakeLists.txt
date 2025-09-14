@@ -7,6 +7,5 @@ set(LIBS
         MLIROptLib
         )
 add_llvm_executable(Tuto-opt Tuto-opt.cpp)
-
 llvm_update_compile_flags(Tuto-opt)
 target_link_libraries(Tuto-opt PRIVATE ${LIBS})
