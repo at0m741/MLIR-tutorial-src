@@ -10,27 +10,22 @@ using namespace mlir;
 using namespace mlir::tuto;
 
 namespace {
-
 struct LowerPolyApplyPass
     : public PassWrapper<LowerPolyApplyPass, OperationPass<mlir::ModuleOp>> {
   MLIR_DEFINE_EXPLICIT_INTERNAL_INLINE_TYPE_ID(LowerPolyApplyPass)
 
   void runOnOperation() override {
     mlir::ModuleOp module = getOperation();
-
     module.walk([&](tuto::PolyApplyOp op) {
       Region &region = op.getBody();
-
       if (!region.empty()) {
         Block *parentBlock = op->getBlock();
         auto &ops = region.front().getOperations();
         parentBlock->getOperations().splice(op->getIterator(), ops);
       }
-
       op.erase(); 
     });
   }
-
   StringRef getArgument() const final { return "lower-polyapply"; }
   StringRef getDescription() const final {
     return "Inline the body of tuto.polyapply ops.";
